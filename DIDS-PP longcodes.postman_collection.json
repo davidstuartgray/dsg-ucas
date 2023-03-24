@@ -1,0 +1,2237 @@
+{
+	"info": {
+		"_postman_id": "174834ed-4c9d-48e3-9d14-73b5b23984e1",
+		"name": "DIDS-PP Multilongcodes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "591536"
+	},
+	"item": [
+		{
+			"name": "HealthCheck",
+			"protocolProfileBehavior": {
+				"strictSSL": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{didsUrl}}/api/healthcheck",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							" \r",
+							"if (responseCode.code === 200)\r",
+							"    postman.setEnvironmentVariable(\"token\", JSON.parse(responseBody).access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{appClientSecret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{appClientId}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "{{scope}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{tokenUrl}}/oauth2/token",
+					"host": [
+						"{{tokenUrl}}"
+					],
+					"path": [
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2204063918583900",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2204063918583900\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2209765753061328",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2209765753061328\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2221358743921650",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2221358743921650\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2285354519022626",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2285354519022626\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2240712671000855",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2240712671000855\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2247826183004580",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2247826183004580\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2295310181516228",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2295310181516228\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2269681373922864",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2269681373922864\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2228983472206768",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2228983472206768\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2225584683160844",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2225584683160844\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2299838949040861",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2299838949040861\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2219195218812382",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2219195218812382\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2211279636947212",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2211279636947212\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2209084059675816",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2209084059675816\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2265533312440291",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2265533312440291\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2206721589159838",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2206721589159838\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2206442246030678",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2206442246030678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2222976372437859",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2222976372437859\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2263690488069564",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2263690488069564\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2227129586892452",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2227129586892452\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2271491493736187",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2271491493736187\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2228629055865583",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2228629055865583\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2200658641244486",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2200658641244486\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2274265173856165",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2274265173856165\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2291438982212069",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2291438982212069\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2205800648921287",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2205800648921287\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2269371003503494",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2269371003503494\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2268888825355561",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2268888825355561\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2284262133286896",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2284262133286896\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2278467008694744",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2278467008694744\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2220880435044732",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2220880435044732\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2282668879178150",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CourseLength\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Status\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Correlation-Id",
+						"value": "3a2a1ca6-d001-463a-aa15-925838a07499",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"LongCode\": \"2282668879178150\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{didsUrl}}/api/v3/application/longcode",
+					"host": [
+						"{{didsUrl}}"
+					],
+					"path": [
+						"api",
+						"v3",
+						"application",
+						"longcode"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
